@@ -33,7 +33,7 @@ end
 
 bash 'mysql_changepasswd' do
    code <<-EOH
-   export myPass="`grep 'temporary password' /var/log/mysqld.log | cut -d\  -f11 | tr '\n' ' ' | sed \"s/ //g\"`"
+   export myPass="`grep 'temporary password' /var/log/mysqld.log | cut -d\\  -f11 | tr '\n' ' ' | sed \"s/ //g\"`"
    mysqladmin --user=root --password="${myPass}" password "#{node['mysql']['rootPassword']}"
    EOH
    not_if { ::Dir.exist?("/var/lib/mysql/cowrie")}
@@ -53,7 +53,7 @@ execute 'mysql_grant' do
 end
 
 execute 'mysql_query' do
-   command "echo \"use cowrie;source /home/cowrie/honeypot/doc/sql/mysql.sql;\" | mysql -u cowrie -p cowrie"
+   command "echo \"use cowrie;source /home/cowrie/honeypot/doc/sql/mysql.sql;\" | mysql -u cowrie --password=cowrie"
    action :nothing
 end
 
