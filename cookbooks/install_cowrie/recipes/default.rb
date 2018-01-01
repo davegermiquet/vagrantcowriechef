@@ -55,5 +55,5 @@ end
 
 execute "python cowrie" do
         user 'cowrie'
-	command '/home/cowrie/honeypot/bin/cowrie start'
+	command '/home/cowrie/honeypot/bin/cowrie restart'
 end

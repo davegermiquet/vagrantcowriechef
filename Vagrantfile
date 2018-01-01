@@ -16,5 +16,6 @@ Vagrant.configure("2") do |config|
 }
       chef.add_recipe "installpython"
       chef.add_recipe "install_cowrie"
+      chef.add_recipe "install_xmpp"
   end
 end
