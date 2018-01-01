@@ -57,14 +57,17 @@ execute 'mysql_query' do
    action :nothing
 end
 
-python_execute '-m pip install mysql' do 
-    python '/usr/local/bin/python2.7'
-end
 
 python_virtualenv '/opt/cowrie/' do
   python '/usr/local/bin/python2.7'
 end
 
+python_execute '-m pip install MySQL-python' do 
+    virtualenv '/opt/cowrie/'
+end
+python_execute '-m pip install mysql' do 
+    virtualenv '/opt/cowrie/'
+end
 pip_requirements '/home/cowrie/honeypot/requirements.txt' do
   virtualenv '/opt/cowrie/'
 end
