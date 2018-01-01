@@ -37,4 +37,23 @@ end
 pip_requirements '/home/cowrie/honeypot/requirements.txt' do
   virtualenv '/opt/cowrie/'
 end
+cookbook_file '/home/cowrie/honeypot/bin/cowrie' do
+  source 'cowrie'
+  force_unlink true
+  owner 'cowrie'
+  group 'cowrie'
+  mode '0755'
+  action :create
+end
+cookbook_file '/home/cowrie/honeypot/cowrie.cfg' do
+  source 'cowrie.cfg'
+  owner 'cowrie'
+  group 'cowrie'
+  mode '0755'
+  action :create
+end
 
+execute "python cowrie" do
+        user 'cowrie'
+	command '/home/cowrie/honeypot/bin/cowrie start'
+end
