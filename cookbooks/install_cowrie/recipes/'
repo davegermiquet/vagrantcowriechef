@@ -1,0 +1,22 @@
+include_recipe 'poise-python::default'
+package 'git' do
+end
+group 'cowrie' do
+  action :create
+  gid '9999'
+  append true
+end
+user 'cowrie' do
+  comment 'start cowrie up'
+  manage_home 
+  uid '9999'
+  group 'cowrie'
+  home '/home/cowrie'
+  shell '/bin/bash'
+  password '$1$JJsvHslasdfjVEroftprNn4JHtDi'
+end
+git "/home/cowrie/honeypot" do
+  repository "https://github.com/micheloosterhof/cowrie.git"
+  reference "master"
+  action :sync
+end

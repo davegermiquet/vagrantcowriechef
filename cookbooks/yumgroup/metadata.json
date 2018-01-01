@@ -1,0 +1,50 @@
+{
+  "name": "yumgroup",
+  "description": "Installs/Configures yum packages via yum groups",
+  "long_description": "yumgroup Cookbook\n=================\n\nA LWRP to install yum packages based on yum groups. This is a stop gap measure while we wait for CHEF-1392, since I have an itch to scratch right now (heck maybe this morphs into the solution for that ticket?)\n\nRequirements\n------------\nRuby 1.9 or later\n\n#### platforms\nAny platform that supports installing packages via yum using yum groups.  \nNOTE: Fedora 18 will work with the :install and :upgrade actions, however the :remove action may be flaky, and attempt to delete everything in the dependency tree (regardless of the value of the groupremove\\_leaf\\_only setting!)\n\nUsage\n-----\n#### yumgroup::default\n\nJust include the `yumgroup` recipe in your cookbook to get access to the LWRP:\n\n```ruby\ninclude_recipe 'yumgroup'\n\nyumgroup 'Web Server' do\n  action :install\nend\n```\n\nThe yumgroup lwrp provides 2 additional attributes that can be set to control its behavior:\n\n* flush\\_cache - Update the yum metadata cache before or after the yum action (similar to the yum\\_package resource)\n* cache\\_error\\_fatal - Make updates of the metadata cache fatal (by default they are not)\n\nContributing\n------------\n\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write your change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: Mike Morris  \nLicense: 3-clause BSD\n",
+  "maintainer": "Mike Morris",
+  "maintainer_email": "michael.m.morris@gmail.com",
+  "license": "3-clause BSD",
+  "platforms": {
+    "redhat": ">= 5.0",
+    "centos": ">= 5.0",
+    "fedora": "< 22.0"
+  },
+  "dependencies": {
+
+  },
+  "recommendations": {
+
+  },
+  "suggestions": {
+
+  },
+  "conflicting": {
+
+  },
+  "providing": {
+
+  },
+  "replacing": {
+
+  },
+  "attributes": {
+
+  },
+  "groupings": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "0.5.0",
+  "source_url": "",
+  "issues_url": "",
+  "privacy": false,
+  "chef_versions": [
+
+  ],
+  "ohai_versions": [
+
+  ]
+}
