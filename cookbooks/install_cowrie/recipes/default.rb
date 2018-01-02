@@ -72,12 +72,10 @@ python_virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/" do
   python "/usr/local/bin/python#{node['python']['pythonmajorversion']}"
 end
 
-python_execute '-m pip install MySQL-python' do 
+python_execute '-m pip install mysqlclient' do 
     virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/"
 end
-python_execute '-m pip install mysql' do 
-    virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/"
-end
+
 pip_requirements '/home/cowrie/honeypot/requirements.txt' do
   virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/"
 end
