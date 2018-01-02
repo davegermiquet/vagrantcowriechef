@@ -48,6 +48,7 @@ end
 execute 'moveservicefile'  do
   command "cp /opt/ejabberd-17.12/bin/ejabberd.service /etc/systemd/system"
   notifies :run, 'execute[systemctl]', :immediately
+  not_if { ::File.exist?('/etc/systemd/system/ejabberd.service') }
 end
 
 execute 'systemctl'  do 

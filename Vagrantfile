@@ -7,7 +7,9 @@
 # you're doing.
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
-  config.vm.provision "chef_solo" do | chef|
+  config.vm.network "private_network",type: "dhcp",
+ virtualbox__intnet: false
+  config.vm.provision "chef_solo",run:"always" do | chef|
   chef.json= { "mysql" => { "rootPassword" => "9#kShfq9890321"
 			},
 		"python" =>  {
