@@ -94,7 +94,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "localhost"
+  - "cowrie.com"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -453,7 +453,7 @@ acl:
   ##
   admin:
     user:
-      - "admin@cowrie"
+      - "admin@cowrie.com"
   ##
   ## Blocked users
   ##

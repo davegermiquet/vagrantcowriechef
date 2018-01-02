@@ -63,7 +63,7 @@ execute 'startService'  do
 end
 
 execute 'AddUser' do
-  command "/opt/ejabberd-17.12/bin/ejabberdctl register admin cowrie changeme"
+  command "/opt/ejabberd-17.12/bin/ejabberdctl register admin cowrie.com changeme"
   action :nothing
 end
 

@@ -30,6 +30,16 @@ python_execute '-m pip install virtualenv' do
     python '/usr/local/bin/python2.7'
 end
 
+bash 'sethostsfile' do 
+   code <<-EOH 
+   grep "cowrie.com" /etc/hosts > null
+   if [[ $? -eq 1 ]] ; then
+   export ipaddress="`ip route | grep src | sed 's/src/\|/' | sed 's/metric/\|/' | cut -d\\| -f 2 | sed 's/ //'`"
+   echo "$ipaddress cowrie.com" >> /etc/hosts
+   fi
+   EOH
+end
+
 
 bash 'mysql_changepasswd' do
    code <<-EOH
