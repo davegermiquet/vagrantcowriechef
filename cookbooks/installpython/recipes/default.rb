@@ -25,12 +25,12 @@ end
 execute 'configure python' do
   cwd "/usr/src/Python-#{node['python']['pythonversion']}"
   command './configure --enable-optimizations'
-  not_if { ::File.exist?('/usr/local/bin/python2.7')}
+  not_if { ::File.exist?("/usr/local/bin/python#{node['python']['pythonmajorversion']}")}
 end
 execute 'make python' do
   cwd "/usr/src/Python-#{node['python']['pythonversion']}"
   command 'make altinstall'
-  not_if { ::File.exist?('/usr/local/bin/python2.7')}
+  not_if { ::File.exist?("/usr/local/bin/python#{node['python']['pythonmajorversion']}")}
 end
 
 remote_file "/usr/src/Python-#{node['python']['pythonversion']}/get-pip.py" do
@@ -43,6 +43,6 @@ end
 
 execute 'download get_pip' do
 cwd "/usr/src/Python-#{node['python']['pythonversion']}"
-  command '/usr/local/bin/python2.7 get-pip.py'
-  not_if { ::File.exist?('/usr/local/bin/pip2.7')}
+  command "/usr/local/bin/python#{node['python']['pythonmajorversion']} get-pip.py"
+  not_if { ::File.exist?("/usr/local/bin/pip#{node['python']['pythonmajorversion']}")}
 end

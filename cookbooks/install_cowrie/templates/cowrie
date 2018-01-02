@@ -4,7 +4,7 @@ AUTHBIND_ENABLED=no
 
 # To override the default virtual enviroment, either set COWRIE_VIRTUAL_ENV or
 # activate it before starting Cowrie
-COWRIE_VIRTUAL_ENV=/opt/cowrie#{node['python']['pythonmajorversion']}/
+COWRIE_VIRTUAL_ENV=/opt/cowrie<%= node['python']['pythonmajorversion'] %>/
 
 #Change the below to -n to disable daemonizing (for instance when using supervisor)
 DAEMONIZE=""

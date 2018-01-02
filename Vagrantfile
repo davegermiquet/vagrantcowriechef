@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
   chef.json= { "mysql" => { "rootPassword" => "9#kShfq9890321"
 			},
 		"python" =>  {
+		            "pythonmajorversion" => "2.7",
 			    "pythonversion" => "2.7.14",
 			    "build-deps" => [ "rpm-build","redhat-rpm-config","yum-utils", "autoconf", "automake", "binutils", "bison", "flex", "gcc", "gcc-c++", "gettext", "libtool", "make", "patch", "pkgconfig", "rpm-sign" ,"openssl-devel","bzip2-devel","tar","gzip"] 
                          }

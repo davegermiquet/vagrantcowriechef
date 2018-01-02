@@ -27,7 +27,7 @@ git "/home/cowrie/honeypot" do
 end
 
 python_execute '-m pip install virtualenv' do 
-    python '/usr/local/bin/python2.7'
+    python "/usr/local/bin/python#{node['python']['pythonmajorversion']}"
 end
 
 bash 'sethostsfile' do 
@@ -68,20 +68,20 @@ execute 'mysql_query' do
 end
 
 
-python_virtualenv '/opt/cowrie/' do
-  python '/usr/local/bin/python2.7'
+python_virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/" do
+  python "/usr/local/bin/python#{node['python']['pythonmajorversion']}"
 end
 
 python_execute '-m pip install MySQL-python' do 
-    virtualenv '/opt/cowrie/'
+    virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/"
 end
 python_execute '-m pip install mysql' do 
-    virtualenv '/opt/cowrie/'
+    virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/"
 end
 pip_requirements '/home/cowrie/honeypot/requirements.txt' do
-  virtualenv '/opt/cowrie/'
+  virtualenv "/opt/cowrie#{node['python']['pythonmajorversion']}/"
 end
-cookbook_file '/home/cowrie/honeypot/bin/cowrie' do
+template '/home/cowrie/honeypot/bin/cowrie' do
   source 'cowrie'
   force_unlink true
   owner 'cowrie'
